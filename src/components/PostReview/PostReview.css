@@ -1,0 +1,20 @@
+.travelog_post_container {
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+
+.travelog_post_container form,
+.travelog_post_container section,
+.travelog_post_container input,
+.travelog_post_container textarea {
+    width: 100%;
+}
+
+.travelog_post_container input {
+    height: 20px;
+}
+
+.travelog_post_container textarea {
+    height: 300px;
+}

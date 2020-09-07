@@ -1,0 +1,13 @@
+.travelog_review {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.travelog_review_close {
+    position: absolute;
+    right: 20px;
+    z-index: 5;
+}

@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+import { createBrowserHistory } from 'history'
+import { BrowserRouter, Route } from 'react-router-dom'
+
+import Login from './components/Login/Login';
+import Dashboard from './components/Dashboard/Dashboard';
+import Profile from './components/Profile/Profile';
+import PostReview from './components/PostReview/PostReview';
+
+import { Counter } from './components/Hooks/Hooks';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const history = createBrowserHistory();
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <BrowserRouter history={history}>
+          <Route exact path='/' component={Login}/>
+          <Route path='/dashboard' component={Dashboard}/>
+          <Route path='/profile' component={Profile}/>
+          <Route path='/post' component={PostReview}/>
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
 
 export default App;
