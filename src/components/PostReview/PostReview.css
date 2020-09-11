@@ -1,5 +1,6 @@
 .travelog_post_container {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     width: 100%;
 }

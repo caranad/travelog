@@ -7,8 +7,7 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import PostReview from './components/PostReview/PostReview';
-
-import { Counter } from './components/Hooks/Hooks';
+import Modal from './components/ProfileModal/Modal';
 
 import './App.css';
 
@@ -18,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Modal/>
         <BrowserRouter history={history}>
           <Route exact path='/' component={Login}/>
           <Route path='/dashboard' component={Dashboard}/>

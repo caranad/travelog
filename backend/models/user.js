@@ -6,7 +6,9 @@ const User = new mongoose.Schema(
         firstname: String,
         lastname: String,
         joined_date: Date,
-        password: String
+        password: String,
+        location: String,
+        img_url: String
     },
     {
         collection: "Users"

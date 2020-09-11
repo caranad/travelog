@@ -9,4 +9,15 @@
 .travelog_login {
    padding: 10px;
    background-color: white;
+   width: 400px;
+   height: 400px;
+   flex-direction: column;
+}
+
+.travelog_login form {
+    width: 100%;
+}
+
+.travelog_login section {
+    margin-bottom: 10px;
 }

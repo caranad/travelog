@@ -2,47 +2,42 @@
     display: flex;
 }
 
-.travelog_my_reviews {
-    width: calc(100% - 20px);
+.travelog_profile_data {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+}
+
+.travelog_profile_data section {
+    margin-bottom: 10px;
 }
 
 .travelog_pf_container {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     width: calc(100% - 150px);
 }
 
-.travelog_profile_data section {
-    width: 500px;
-    display: flex;
-    background-color: white;
-}
-
-.travelog_table_cat, .travelog_table_val {
-    border: 1px solid black;
-    padding: 10px;
-}
-
 .travelog_table_cat {
-    width: 25%;
-}
-
-.travelog_table_val {
-    width: 75%;
+    font-weight: bold;
 }
 
 .travelog_profile {
-    display: flex;
-    padding: 10px;
+    border: 1px solid black;
 }
 
 .travelog_profile_pic {
-    margin-right: 30px;
+    flex: 1 0 100px;
+}
+
+.travelog_profile_info {
+    flex: 8;
 }
 
 .travelog_profile_pic img {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border: 1px solid gray;
 }

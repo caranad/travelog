@@ -1,5 +1,6 @@
 .travelog_db_reviews {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     width: calc(100% - 150px);
 }

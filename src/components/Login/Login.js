@@ -13,7 +13,7 @@ export default class Login extends Component {
     submit(e) {
         e.preventDefault();
 
-        this.userService.getUser(e.target.username.value, e.target.password.value).then((response) => {
+        this.userService.authenticateUser(e.target.username.value, e.target.password.value).then((response) => {
             if (response.data.isValid) { 
                 localStorage.setItem("user", response.data.username)
                 this.props.history.push('/dashboard');
@@ -26,7 +26,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="travelog_login_container center">
-                <div className="travelog_login">
+                <div className="travelog_login center">
                     <img src="./images/logo-travelog.png"/>
                     <form onSubmit={ this.submit }>
                         <section>
@@ -39,7 +39,7 @@ export default class Login extends Component {
                             <br/>
                             <input type="password" name="password"/>
                         </section>
-                        <button type="submit">Login</button>
+                        <button className="primary" type="submit">Login</button>
                     </form>
                 </div>
             </div>

@@ -16,7 +16,7 @@ mongoose.connect("mongodb://localhost:27017/travelogue").then(() => {
 
 const options = {
     origin: ['http://localhost:3000'],
-    methods: ['GET','POST', 'PUT', 'DELETE'],
+    methods: ['GET','POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true
 };
 
@@ -30,6 +30,24 @@ app.post('/api/login', async (req, res) => {
     const isValid = await uc.validateUser(username, password);
     res.json({
         isValid, username
+    })
+})
+
+app.get('/api/users/:username', (req, res) => {
+    uc.getUser(req.params.username).then((user) => {
+        if (user && user.length > 0) {
+            res.json({
+                user: user[0]
+            })
+        }
+    })
+})
+
+app.patch('/api/users/:username', (req, res) => {
+    uc.updateUser(req.params.username, req.body).then((user) => {
+        res.json({
+            success: true
+        })
     })
 })
 

@@ -79,7 +79,7 @@ export default class PostReview extends Component {
                             <br/>
                             <input type="range" min="0" max="5" step="1" onChange={ this.updateRating }/>{ this.state.rating }
                         </section>
-                        <button type="submit">Submit Review</button>
+                        <button className="primary" type="submit">Submit Review</button>
                     </form>
                 </div>
             </div>
