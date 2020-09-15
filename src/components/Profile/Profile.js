@@ -78,7 +78,7 @@ export default class Reviews extends Component {
                                 </section>
                                 <section>
                                     <div className="travelog_table_cat">Location</div>
-                                    <div className="travelog_table_val">Toronto, Ontario</div>
+                                    <div className="travelog_table_val">{ this.state.user.location }</div>
                                 </section>
                                 <section>
                                     <div className="travelog_table_cat">Reviews</div>
