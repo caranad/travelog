@@ -41,7 +41,7 @@ export default class PostReview extends Component {
 
         if (this.validateReview(event)) {
             const review = {
-                username: "aranadic",
+                username: localStorage.getItem("user"),
                 location: event.target.location.value,
                 content: event.target.review.value,
                 rating: this.state.rating
@@ -49,7 +49,6 @@ export default class PostReview extends Component {
     
             this.reviewService.addReview({ review }).then((response) => {
                 if (response.data && response.data.success) {
-                    alert("Successfully added review!");
                     this.props.history.push('/dashboard');
                 }
             })

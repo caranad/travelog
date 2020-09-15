@@ -8,6 +8,6 @@
 
 .travelog_review_close {
     position: absolute;
-    right: 2%;
+    right: 20px;
     z-index: 5;
 }

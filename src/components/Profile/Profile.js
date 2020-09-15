@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Modal from '../ProfileModal/Modal';
 import Review from '../Review/Review';
 import Sidebar from '../Sidebar/Sidebar';
 
 import ReviewService from '../../services/review/review'
 import UserService from '../../services/users/users';
+
+import UpdateModal from '../../modal_templates/UpdateModal';
 import './Profile.css';
 
 export default class Reviews extends Component {
@@ -49,6 +52,10 @@ export default class Reviews extends Component {
     render() {
         return localStorage.getItem("user") ? (
             <div className="travelog_container">
+                <Modal 
+                    template={ <UpdateModal default={this.state.user}/> } 
+                    title={ "Update User" }
+                />
                 <Sidebar/>
 
                 <div className="travelog_pf_container">

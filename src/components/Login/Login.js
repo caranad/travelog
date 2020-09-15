@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import UserService from '../../services/users/users';
+import Modal from '../ProfileModal/Modal';
+import RegisterModal from '../../modal_templates/RegisterModal'
 import './Login.css'
 
 export default class Login extends Component {
@@ -7,7 +9,13 @@ export default class Login extends Component {
         super();
 
         this.submit = this.submit.bind(this);
+        this.register = this.register.bind(this);
         this.userService = new UserService();
+    }
+
+    register(e) {
+        e.preventDefault();
+        document.querySelector(".modal").style.display="flex";
     }
 
     submit(e) {
@@ -26,6 +34,10 @@ export default class Login extends Component {
     render() {
         return (
             <div className="travelog_login_container center">
+                <Modal 
+                    template={ <RegisterModal/> } 
+                    title={ "Register User" }
+                />
                 <div className="travelog_login center">
                     <img src="./images/logo-travelog.png"/>
                     <form onSubmit={ this.submit }>
@@ -39,7 +51,10 @@ export default class Login extends Component {
                             <br/>
                             <input type="password" name="password"/>
                         </section>
-                        <button className="primary" type="submit">Login</button>
+                        <section>
+                            <button className="primary" type="submit">Login</button>
+                            <button className="success" onClick={this.register}>Register</button>
+                        </section>
                     </form>
                 </div>
             </div>

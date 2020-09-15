@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+.travelog_login form section button {
+    margin-right: 20px;
+}
+
 .travelog_login section {
     margin-bottom: 10px;
 }

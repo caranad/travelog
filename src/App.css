@@ -1,29 +1,33 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   height:100%;
   width:100%;
 }
 
 button {
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 40px;
   font-size: 12px;
   border: none;
   color: white;
 }
 
-input {
+input, textarea {
   width: 100%;
 }
 
 button.primary {
-  background-color: blue;
+  background-color: #4040e6;
 
 }
 
 button.success {
-  background-color: green;
+  background-color: #269826;
 }
-
+/* 
 button.danger {
   background-color: red;
-}
+} */

@@ -9,6 +9,10 @@ class UserController {
         return !!(users && users[0]);
     }
 
+    addUser(user) {
+        return User.insertMany([user]);
+    }
+
     getUser(username) {
         return User.find({ username });
     }

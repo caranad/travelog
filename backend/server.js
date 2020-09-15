@@ -14,11 +14,7 @@ mongoose.connect("mongodb://localhost:27017/travelogue").then(() => {
     console.log("Successfully created travelogue");
 });
 
-const options = {
-    origin: ['http://localhost:3000'],
-    methods: ['GET','POST', 'PUT', 'PATCH', 'DELETE'],
-    credentials: true
-};
+const options = require('./cors.json');
 
 app.use(bodyparser.json());
 app.use(cors(options));
@@ -40,6 +36,16 @@ app.get('/api/users/:username', (req, res) => {
                 user: user[0]
             })
         }
+    })
+})
+
+app.post('/api/users', (req, res) => {
+    const data = { ...req.body, joined_date: new Date(), img_url: '' }
+
+    uc.addUser(req.body).then((user) => {
+        res.json({
+            success: true
+        })
     })
 })
 

@@ -8,6 +8,10 @@ export default class UserService {
         return axios.post(`${CONFIG.api_url}/api/login`, { username, password })
     }
 
+    addUser(user) {
+        return axios.post(`${CONFIG.api_url}/api/users`, user);
+    }
+
     getUser(username) {
         return axios.get(`${CONFIG.api_url}/api/users/${username}`)
     }

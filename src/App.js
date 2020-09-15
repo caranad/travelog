@@ -17,7 +17,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Modal/>
         <BrowserRouter history={history}>
           <Route exact path='/' component={Login}/>
           <Route path='/dashboard' component={Dashboard}/>
