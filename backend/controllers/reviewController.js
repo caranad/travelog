@@ -15,6 +15,10 @@ class ReviewController {
     deleteReview(id) {
         return Reviews.deleteOne({ _id: id });
     }
+
+    deleteReviewsByUser(username) {
+        return Reviews.deleteMany({ username });
+    }
 }
 
 module.exports = {

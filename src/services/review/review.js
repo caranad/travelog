@@ -16,4 +16,8 @@ export default class ReviewService {
     deleteReview(id) {
         return axios.delete(`${CONFIG.api_url}/api/reviews/${id}`);
     }
+
+    deleteReviewsByUser(username) {
+        return axios.delete(`${CONFIG.api_url}/api/reviews/${username}`);
+    }
 }

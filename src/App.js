@@ -7,7 +7,6 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import PostReview from './components/PostReview/PostReview';
-import Modal from './components/ProfileModal/Modal';
 
 import './App.css';
 

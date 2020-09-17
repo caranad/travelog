@@ -1,8 +1,12 @@
+.travelog_sidebar {
+    height: 100%;
+}
+
 .travelog_sidebar ul {
     margin: 0;
     padding: 0;
     background-color: navy;
-    height: 100vh;
+    height: 100%;
     width: 150px;
 }
 

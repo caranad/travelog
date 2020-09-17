@@ -43,12 +43,10 @@ export default class Login extends Component {
                     <form onSubmit={ this.submit }>
                         <section>
                             <label htmlFor="username">Username</label>
-                            <br/>
                             <input type="text" name="username"/>
                         </section>
                         <section>
                             <label htmlFor="password">Password</label>
-                            <br/>
                             <input type="password" name="password"/>
                         </section>
                         <section>

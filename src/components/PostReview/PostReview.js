@@ -65,17 +65,14 @@ export default class PostReview extends Component {
                     <form onSubmit = { this.addReview }>
                         <section>
                             <label htmlFor="location">Location</label>
-                            <br/>
                             <input type="text" name="location"></input>
                         </section>
                         <section>
                             <label htmlFor="review">Review</label>
-                            <br/>
                             <textarea name="review"></textarea>
                         </section>
                         <section>
                             <label htmlFor="rating">Rating</label>
-                            <br/>
                             <input type="range" min="0" max="5" step="1" onChange={ this.updateRating }/>{ this.state.rating }
                         </section>
                         <button className="primary" type="submit">Submit Review</button>

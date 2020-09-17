@@ -36,6 +36,8 @@ export default class RegisterModal extends React.Component {
                 lastname: event.target.lastname.value,
                 password: event.target.password.value,
                 location: event.target.location.value,
+                img_url: '',
+                joined_date: new Date()
             }
             
             this.userService.addUser(user).then(() => {

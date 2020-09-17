@@ -41,3 +41,7 @@
     height: 100px;
     border: 1px solid gray;
 }
+
+.travelog_profile section button {
+    margin-right: 20px;
+}

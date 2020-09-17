@@ -1,5 +1,3 @@
 - Add JWT authentication / password encryption (use Passport?)
-- Add ability to add profile picture (use Multer?)
-- Use Google Maps API to scope out locations?
-- Delete user functionality
+- Reformat server responses to be more dank (e.g. return user objects, errors, etc)
 - Improve UI design / animations

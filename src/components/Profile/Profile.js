@@ -25,6 +25,9 @@ export default class Reviews extends Component {
 
         this.changed = this.changed.bind(this);
         this.openModal = this.openModal.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
+        this.deleteImage = this.deleteImage.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
 
         this.reviewService = new ReviewService();
         this.userService = new UserService();
@@ -45,8 +48,36 @@ export default class Reviews extends Component {
         this.setState({ reviews });
     }
 
+    deleteUser() {
+        if (window.confirm("Are you sure you want to delete your user? This is irreversible!")) {
+            this.userService.deleteUser(localStorage.getItem("user")).then((response) => {
+                if (response.data.success) {
+                    localStorage.setItem("user", "");
+                    window.location.href = "/login";
+                }
+            })
+        }
+    }
+
     openModal() {
-        document.querySelector(".modal").style.display="flex"
+        document.querySelector(".modal").style.display="flex";
+    }
+
+    uploadImage(event) {
+        event.preventDefault();
+
+        let formData = new FormData();
+        formData.append('avatar', event.target.files[0]);
+        formData.append('username', localStorage.getItem("user"));
+        this.userService.uploadImage(formData).then((response) => {
+            this.setState({ user: { img_url: `http://localhost:3001/api/upload/${response.data.img_url}` } })
+        })
+    }
+
+    deleteImage(event) {
+        this.userService.updateUser(localStorage.getItem("user"), { img_url: '' }).then((response) => {
+            this.setState({ user: { img_url: '' }})
+        })
     }
 
     render() {
@@ -60,12 +91,18 @@ export default class Reviews extends Component {
 
                 <div className="travelog_pf_container">
                     <h1>My Profile</h1>
+                    <p>{this.state.test}</p>
 
                     { /* Convert this into its own component */ }
                     <div className="travelog_profile">
                         <div className="travelog_profile_data">
                             <div className="travelog_profile_pic">
-                                <img src="https://racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png"></img>
+                                <img src={ this.state.user.img_url ? this.state.user.img_url : "https://racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png" }></img>
+                                {
+                                    this.state.user.img_url ? 
+                                    <button className="primary" onClick={this.deleteImage}>Remove Image</button> :
+                                    <input type="file" name="avatar" onChange={ this.uploadImage } />
+                                }
                             </div>
                             <div className="travelog_profile_info">
                                 <section>
@@ -86,6 +123,7 @@ export default class Reviews extends Component {
                                 </section>
                                 <section>
                                     <button className="success" onClick={ this.openModal }>Edit</button>
+                                    <button className="danger" onClick={ this.deleteUser }>Delete</button>
                                 </section>
                             </div>
                         </div>

@@ -20,6 +20,14 @@ class UserController {
     updateUser(username, data) {
         return User.updateMany({ username }, data)
     }
+
+    deleteUser(username) {
+        return User.deleteMany({ username });
+    }
+
+    uploadImage(username, img_url) {
+        return User.updateMany({ username }, { img_url })
+    }
 }
 
 module.exports = {

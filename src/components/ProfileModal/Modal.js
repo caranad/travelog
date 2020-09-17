@@ -7,7 +7,6 @@ export default class Modal extends Component {
         super();
 
         this.closeModal = this.closeModal.bind(this);
-
         this.userService = new UserService();
     }
 
@@ -28,22 +27,3 @@ export default class Modal extends Component {
         )
     }
 }
-
-{/* <form onSubmit={ this.submit }>
-<section>
-    <label htmlFor="firstname">First Name</label>
-    <input name="firstname"/>
-</section>
-<section>
-    <label htmlFor="lastname">Last Name</label>
-    <input name="lastname"/>
-</section>
-<section>
-    <label htmlFor="location">Location</label>
-    <input name="location"/>
-</section>
-<section>
-    <button type="submit" className="success">Update</button>
-    <button className="danger" onClick={ this.closeModal }>Cancel</button>
-</section>
-</form> */}

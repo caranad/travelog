@@ -8,6 +8,12 @@ export default class UserService {
         return axios.post(`${CONFIG.api_url}/api/login`, { username, password })
     }
 
+    uploadImage(data) {
+        return axios.post(`${CONFIG.api_url}/api/upload`, data, { headers: 
+            { 'content-type': 'multipart/form-data' }
+        });
+    }
+
     addUser(user) {
         return axios.post(`${CONFIG.api_url}/api/users`, user);
     }
@@ -18,5 +24,9 @@ export default class UserService {
 
     updateUser(username, data) {
         return axios.patch(`${CONFIG.api_url}/api/users/${username}`, data)
+    }
+
+    deleteUser(username) {
+        return axios.delete(`${CONFIG.api_url}/api/users/${username}`);
     }
 }
