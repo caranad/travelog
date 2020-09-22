@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 10px;
     width: 100%;
+    height: 100vh;
 }
 
 .travelog_post_container form,

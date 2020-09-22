@@ -30,9 +30,12 @@ export default class UpdateModal extends React.Component {
                 location: event.target.location.value
             }
             
-            this.userService.updateUser(localStorage.getItem("user"), user).then((response) => {
-                if (response.data.success) {
-                    alert("Successfully updated user!");
+            this.userService.updateUser(JSON.parse(localStorage.getItem("user")).username, user).then((response) => {
+                if (response.data) {
+                    if (response.data.success) {
+                        alert("Successfully updated user!");
+                        this.props.changed(response.data.user);
+                    }
                     document.querySelector(".modal").style.display = "none";
                 }
             })

@@ -1,3 +1,2 @@
 - Add JWT authentication / password encryption (use Passport?)
-- Reformat server responses to be more dank (e.g. return user objects, errors, etc)
 - Improve UI design / animations

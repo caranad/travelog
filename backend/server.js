@@ -31,7 +31,12 @@ app.post('/api/upload', (req, res) => {
     const file = upload.single('avatar');
     file(req, res, (err) => {
         uc.uploadImage(req.body.username, `http://localhost:3001/api/upload/${req.file.filename}`).then(() => {
-            res.json({ success: true, img_url: req.file.filename });
+            uc.getUser(req.body.username).then((user) => {
+                res.json({ 
+                    success: true, 
+                    user: JSON.stringify(user[0])
+                });
+            })
         })
      });
 })
@@ -44,10 +49,8 @@ app.post('/api/login', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const isValid = await uc.validateUser(username, password);
-    res.json({
-        isValid, username
-    })
+    const response = await uc.validateUser(username, password);
+    res.json(response);
 })
 
 app.get('/api/users/:username', (req, res) => {
@@ -65,15 +68,19 @@ app.post('/api/users', (req, res) => {
 
     uc.addUser(req.body).then((user) => {
         res.json({
-            success: true
+            success: true,
+            user: JSON.stringify(user[0])
         })
     })
 })
 
 app.patch('/api/users/:username', (req, res) => {
     uc.updateUser(req.params.username, req.body).then(() => {
-        res.json({
-            success: true
+        uc.getUser(req.params.username).then((user) => {
+            res.json({
+                success: true,
+                user: JSON.stringify(user[0])
+            })
         })
     })
 })
@@ -82,7 +89,8 @@ app.delete('/api/users/:username', (req, res) => {
     uc.deleteUser(req.params.username).then(() => {
         rc.deleteReviewsByUser(req.params.username).then(() => {
             res.json({
-                success: true
+                success: true,
+                user: ""
             })
         })
     })

@@ -41,7 +41,7 @@ export default class PostReview extends Component {
 
         if (this.validateReview(event)) {
             const review = {
-                username: localStorage.getItem("user"),
+                username: JSON.parse(localStorage.getItem("user")).username,
                 location: event.target.location.value,
                 content: event.target.review.value,
                 rating: this.state.rating

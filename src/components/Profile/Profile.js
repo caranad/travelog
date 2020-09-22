@@ -24,6 +24,7 @@ export default class Reviews extends Component {
         }
 
         this.changed = this.changed.bind(this);
+        this.updated = this.updated.bind(this);
         this.openModal = this.openModal.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         this.deleteImage = this.deleteImage.bind(this);
@@ -34,13 +35,11 @@ export default class Reviews extends Component {
     }
 
     componentDidMount() {
-        this.reviewService.getReview({ username: localStorage.getItem("user") }).then((response) => {
+        this.reviewService.getReview({ username: JSON.parse(localStorage.getItem("user")).username }).then((response) => {
             this.setState({ reviews: response.data.reviews });
         })
 
-        this.userService.getUser(localStorage.getItem("user")).then((response) => {
-            this.setState({ user: response.data.user });
-        })
+        this.setState({ user: JSON.parse(localStorage.getItem("user")) })
     }
 
     changed(id) {
@@ -48,12 +47,17 @@ export default class Reviews extends Component {
         this.setState({ reviews });
     }
 
+    updated(user) {
+        localStorage.setItem("user", user);
+        this.setState({ user: JSON.parse(user) });
+    }
+
     deleteUser() {
         if (window.confirm("Are you sure you want to delete your user? This is irreversible!")) {
-            this.userService.deleteUser(localStorage.getItem("user")).then((response) => {
+            this.userService.deleteUser(JSON.parse(localStorage.getItem("user")).username).then((response) => {
                 if (response.data.success) {
-                    localStorage.setItem("user", "");
-                    window.location.href = "/login";
+                    localStorage.setItem("user", response.data.user);
+                    this.props.history.push('/');
                 }
             })
         }
@@ -68,14 +72,16 @@ export default class Reviews extends Component {
 
         let formData = new FormData();
         formData.append('avatar', event.target.files[0]);
-        formData.append('username', localStorage.getItem("user"));
+        formData.append('username', JSON.parse(localStorage.getItem("user")).username);
         this.userService.uploadImage(formData).then((response) => {
-            this.setState({ user: { img_url: `http://localhost:3001/api/upload/${response.data.img_url}` } })
+            localStorage.setItem("user", response.data.user);
+            this.setState({ user: JSON.parse(response.data.user) })
         })
     }
 
     deleteImage(event) {
-        this.userService.updateUser(localStorage.getItem("user"), { img_url: '' }).then((response) => {
+        this.userService.updateUser(JSON.parse(localStorage.getItem("user")).username, { img_url: '' }).then((response) => {
+            localStorage.setItem("user", response.data.user)
             this.setState({ user: { img_url: '' }})
         })
     }
@@ -84,7 +90,7 @@ export default class Reviews extends Component {
         return localStorage.getItem("user") ? (
             <div className="travelog_container">
                 <Modal 
-                    template={ <UpdateModal default={this.state.user}/> } 
+                    template={ <UpdateModal default={this.state.user} changed={ this.updated }/> } 
                     title={ "Update User" }
                 />
                 <Sidebar/>

@@ -6,7 +6,18 @@ class UserController {
 
     async validateUser(username, password) {
         const users = await User.find({ username, password });
-        return !!(users && users[0]);
+        
+        if (users && users[0]) {
+            return {
+                isValid: true,
+                user: JSON.stringify(users[0])
+            }
+        } else {
+            return {
+                isValid: false,
+                users: null
+            }
+        }
     }
 
     addUser(user) {

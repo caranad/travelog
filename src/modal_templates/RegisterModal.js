@@ -40,8 +40,13 @@ export default class RegisterModal extends React.Component {
                 joined_date: new Date()
             }
             
-            this.userService.addUser(user).then(() => {
-                document.querySelector(".modal").style.display = "none";
+            this.userService.addUser(user).then((response) => {
+                if (response.data.success) {
+                    alert("Congratulations! Your user is now registered!");
+                    document.querySelector(".modal").style.display = "none";
+                    localStorage.setItem("user", response.data.user);
+                    window.location.href = "/dashboard";
+                }
             })
         }
     }

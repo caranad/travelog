@@ -27,7 +27,7 @@ export default class Review extends Component {
         return (
             <div className="travelog_review">
                 {
-                    review.username === localStorage.getItem("user") ? 
+                    review.username === JSON.parse(localStorage.getItem("user")).username ? 
                     <p className="travelog_review_close" onClick={ () => this.deleteReview(review._id) }>✖️</p> :
                     null
                 }

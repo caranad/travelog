@@ -23,7 +23,7 @@ export default class Login extends Component {
 
         this.userService.authenticateUser(e.target.username.value, e.target.password.value).then((response) => {
             if (response.data.isValid) { 
-                localStorage.setItem("user", response.data.username)
+                localStorage.setItem("user", response.data.user);
                 this.props.history.push('/dashboard');
             } else {
                 alert("Invalid username or password. Please try again or register.")
